@@ -1,0 +1,63 @@
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,skip_taskbar,skip_pager
+use_xft yes
+xftfont 123:size=9
+xftalpha 1
+update_interval 1
+total_run_times 0
+alignment tr
+minimum_size 250 5
+maximum_width 400
+gap_x 8
+gap_y 20
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 8
+border_margin 4
+border_width 1
+default_color white
+default_shade_color black
+default_outline_color black
+double_buffer yes
+no_buffers yes
+uppercase no
+cpu_avg_samples 4
+net_avg_samples 4
+override_utf8_locale yes
+use_spacer none
+gap_x 25
+gap_y 10
+
+TEXT
+${voffset 5}
+${color DimGray} ${font :size=30}$alignc${time %H:%M:%S}
+${voffset -30}${font :bold:size=10}$alignc${time %d %B %Y}
+
+${font Arial:bold:size=10}${color Tan1}SYSTEME ${color DarkSlateGray}
+$font${color DimGray}$sysname $kernel $alignr $machine
+$font${color DimGray}Uptime $alignr $uptime
+
+${font Arial:bold:size=10}${color Tan1}BATTERIE ${color DarkSlateGray}
+$font${color DimGray}${battery_bar 6, 220} $alignr $battery_percent%
+
+${font Arial:bold:size=10}${color Tan1}PROCESSEUR ${color DarkSlateGray}
+$font${color DimGray}CPU ${cpu}% ${cpubar}
+
+${font Arial:bold:size=10}${color Tan1}MEMOIRE ${color DarkSlateGray}
+$font${color DimGray}MEM $alignc $mem / $memmax $alignr $memperc%
+$membar
+
+${font Arial:bold:size=10}${color Tan1}DISQUE DUR ${color DarkSlateGray}
+$font${color DimGray}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_free_perc /}%
+${fs_bar /}
+$font${color DimGray}/swap $alignc $swap / $swapmax $alignr $swapperc%
+$swapbar
+
+${font Arial:bold:size=10}${color Tan1}RESEAU ${color DarkSlateGray}
+$font${color DimGray}IP local $alignr ${addr wlp2s0}
+$font${color DimGray}IP public $alignr ${texeci 3600 wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1}
+$font${color DimGray}Down/Up $alignr ${downspeed wlp2s0}/${upspeed wlp2s0}
+$font${color DimGray}Download/Upload $alignr ${totaldown wlp2s0}/${totalup wlp2s0}
